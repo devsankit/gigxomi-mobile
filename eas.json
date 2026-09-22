@@ -1,0 +1,43 @@
+{
+  "cli": {
+    "version": ">= 12.0.0"
+  },
+  "build": {
+    "preview": {
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://www.gigxomi.com/api",
+        "EXPO_PUBLIC_DISTRIBUTION_CHANNEL": "DIRECT"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "directRelease": {
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://www.gigxomi.com/api",
+        "EXPO_PUBLIC_DISTRIBUTION_CHANNEL": "DIRECT"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "playReader": {
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://www.gigxomi.com/api",
+        "EXPO_PUBLIC_DISTRIBUTION_CHANNEL": "PLAY_READER"
+      },
+      "android": {
+        "buildType": "app-bundle"
+      }
+    },
+    "production": {
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://www.gigxomi.com/api",
+        "EXPO_PUBLIC_DISTRIBUTION_CHANNEL": "PLAY_READER"
+      },
+      "android": {
+        "buildType": "app-bundle"
+      }
+    }
+  }
+}

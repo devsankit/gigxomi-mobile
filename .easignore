@@ -1,0 +1,16 @@
+node_modules/
+.expo/
+.expo-run-logs/
+dist/
+web-build/
+expo-env.d.ts
+*.tsbuildinfo
+*.log
+*.apk
+*.aab
+*.der
+play-upload-certificate*
+.env
+.env*.local
+android/
+ios/

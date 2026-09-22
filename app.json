@@ -1,0 +1,99 @@
+{
+  "expo": {
+    "name": "Gigxomi",
+    "slug": "gigxomi",
+    "owner": "ppw",
+    "version": "2.2.7",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "gigxomi",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#05070A"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.gigxomi.app",
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "Allow Gigxomi to record voice notes for chat replies."
+      }
+    },
+    "android": {
+      "package": "com.gigxomi.app",
+      "versionCode": 33,
+      "googleServicesFile": "./google-services.json",
+      "permissions": [
+        "RECORD_AUDIO",
+        "POST_NOTIFICATIONS"
+      ],
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#05070A"
+      },
+      "edgeToEdgeEnabled": true,
+      "softwareKeyboardLayoutMode": "pan",
+      "predictiveBackGestureEnabled": false,
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "https",
+              "host": "www.gigxomi.com",
+              "pathPrefix": "/r/"
+            },
+            {
+              "scheme": "https",
+              "host": "gigxomi.com",
+              "pathPrefix": "/r/"
+            }
+          ],
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
+        },
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "https",
+              "host": "www.gigxomi.com",
+              "pathPrefix": "/mobile/billing-return"
+            }
+          ],
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
+        }
+      ]
+    },
+    "plugins": [
+      "expo-router",
+      "@react-native-firebase/app",
+      "@react-native-firebase/messaging",
+      "./plugins/with-notifee-maven-repository",
+      "./plugins/with-project-offer-alarm",
+      "./plugins/with-install-referrer",
+      "./plugins/with-release-bundle-cache-isolation",
+      "expo-font"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "87ff559f-d31e-450f-a3d1-729eb24a87ad"
+      }
+    }
+  }
+}

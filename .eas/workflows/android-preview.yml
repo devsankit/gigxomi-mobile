@@ -1,0 +1,14 @@
+name: Android Preview (Mobile Branch)
+
+on:
+  push:
+    branches:
+      - mobile
+
+jobs:
+  build_android_preview:
+    name: Build Android Preview APK
+    type: build
+    params:
+      platform: android
+      profile: preview
