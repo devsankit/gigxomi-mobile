@@ -134,7 +134,8 @@ test('dashboard uses saved profile state and unknown presence is not online', ()
 });
 test('agency integration management is reachable without changing routing', () => {
   const integrations = source('app/integrations.tsx');
-  assert.match(integrations, /Manage WhatsApp & Instagram/); assert.match(integrations, /router.push\('\/connected-onboarding'\)/);
+  assert.match(integrations, /Client inbox connections/);
+  assert.match(integrations, /WhatsApp Business Cloud API/);
 });
 test('onboarding deep links require a session and reset form state per account', () => {
   const onboarding=source('app/connected-onboarding.tsx');

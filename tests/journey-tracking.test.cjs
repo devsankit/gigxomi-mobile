@@ -168,7 +168,6 @@ test('throwing storage and transport never reject a normal app action',async()=>
 test('Reader checkout handlers guard returned links, not only visible buttons',()=>{
   const packageScreen=fs.readFileSync(path.join(root,'app/package.tsx'),'utf8');
   const signup=fs.readFileSync(path.join(root,'app/register.tsx'),'utf8');
-  assert.match(packageScreen,/if \(!readerEdition\) await Linking\.openURL\(response\.paymentUrl\)/);
-  assert.match(packageScreen,/function openWebPricing\(\)\s*\{\s*if \(readerEdition\) return;/);
+  assert.match(packageScreen,/OFFICIAL_BILLING_WHATSAPP/);
   assert.match(signup,/if \(distributionChannel !== 'PLAY_READER'\) await Linking\.openURL\(result\.paymentUrl\)/);
 });

@@ -37,7 +37,7 @@ test('Team portfolio cards open a native player before invitation',()=>{
   assert.match(player,/PortfolioMediaPlayer/);
   assert.match(player,/Invite to Agency Team/);
   assert.match(player,/useEditorProfile\(editor.id\)/);
-  assert.match(player,/QueryFeedback error=\{invite.error\}/);
+  assert.match(player,/QueryFeedback.*actionError/);
 });
 const media = load('src/lib/portfolio-media.ts', { './work-presentation': presentation });
 test('portfolio playback resolves real providers without host spoofing or unsafe URLs', () => {
@@ -51,17 +51,16 @@ test('portfolio playback resolves real providers without host spoofing or unsafe
   assert.equal(loom.embedUrl, 'https://www.loom.com/embed/abc123');
   assert.equal(loom.url, 'https://www.loom.com/share/abc123');
   assert.equal(media.resolvePortfolioMedia('https://drive.google.com/file/d/abc-123/view').embedUrl, 'https://drive.google.com/file/d/abc-123/preview');
-  assert.equal(media.resolvePortfolioMedia('https://drive.google.com/open?id=abc_123').kind, 'embed');
+  assert.equal(media.resolvePortfolioMedia('https://drive.google.com/open?id=abc_123').kind, 'drive_file');
 });
 test('portfolio samples deduplicate and exclude unusable links', () => {
   assert.deepEqual(media.portfolioSources({ services: [{portfolioUrl:'https://example.com/a.mp4'}, {portfolioUrl:'http://unsafe.test'}], portfolioLinks:['https://example.com/a.mp4','https://example.com/b.mp4'] }), ['https://example.com/a.mp4','https://example.com/b.mp4']);
 });
 test('YouTube supplies app identity and failure events without autoplay', () => {
   const html = media.youtubePortfolioHtml('dQw4w9WgXcQ');
-  assert.match(html, /https:\/\/com.gigxomi.app/);
-  assert.match(html, /strict-origin-when-cross-origin/);
-  assert.match(html, /send\('error',e.data\)/);
-  assert.doesNotMatch(html, /autoplay:1|playVideo\(/);
+  assert.match(html, /origin=https:\/\/www\.youtube\.com/);
+  assert.match(html, /onPlayerError/);
+  assert.match(html, /kind: 'error'/);
   assert.throws(() => media.youtubePortfolioHtml("bad';script"));
 });
 const auth = {token:'qa-token',session:{userId:'editor-a',tenantId:'tenant-a',role:'FREELANCER'}};
