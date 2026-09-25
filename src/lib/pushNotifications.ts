@@ -188,7 +188,14 @@ function getNotificationChannelIdForData(data: Record<string, unknown>) {
   if (isChatPushData(data)) {
     return GIGXOMI_NOTIFICATION_CHANNELS.chat;
   }
-  if (type === 'project' || type === 'project_assigned' || type === 'team_invite') {
+  if (
+    type === 'project' ||
+    type === 'project_assigned' ||
+    type === 'team_invite' ||
+    type === 'team_request_sent' ||
+    type === 'team_request' ||
+    type.includes('team')
+  ) {
     return GIGXOMI_NOTIFICATION_CHANNELS.project;
   }
   if (type === 'work_accepted' || type === 'work_completed' || type === 'status' || type === 'project_status') {
